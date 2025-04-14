@@ -30,10 +30,43 @@ class TestApiUpdateDelView(APIView):
     url_prefix = (f'{prefix}/<int:_id>',)
 
     def get(self, _id):
-        print(f"查询id为{_id}用户成功...")
-        return self.jsonify(_id)
+        """获取用户信息123.
+        ---
+            tags: 
+              - Greeting API
+            parameters:
+              - name: _id
+                in: path
+                description: 用户ID
+              - name: name
+                description: 用户名称
+              - name: type
+                description: 用户类型（1/2/3）
+              - name: startTime
+                description: 开始时间
+              - name: endTime
+                description: 结束时间
+            responses: 
+              200: 
+                description: 返回查询成功
+      
+              
+        """
+        # print(f"查询id为{_id}用户成功...")
+        # return self.jsonify(_id)
+        params = request.args
+        name = params.get('name', 'World')
+        print(f"查询id为{_id}用户成功..., 参数ID为{_id}")
+        return self.jsonify({"message": f"Hello, {params}!"})
 
     def put(self, _id):
+        """更新用户信息."
+        ---
+            tags:
+              - Greeting API
+            parameters:
+              - name: name
+        """
         json_data = request.json
         multi_dict_data = MultiDict(json_data)
         print('数据更新成功...')

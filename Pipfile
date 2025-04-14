@@ -13,6 +13,7 @@ flask-restful = "*"
 pymysql = "*"
 flask-caching = "*"
 cryptography = "*"
+flasgger = "*"
 
 [dev-packages]
 

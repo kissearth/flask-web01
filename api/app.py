@@ -3,6 +3,8 @@ from flask import Flask, Blueprint
 from inspect import getmembers
 
 from api.extensions import db
+from api.extensions import swagger
+
 import api.views.entry
 
 def create_app(config_object="settings"): 
@@ -27,6 +29,7 @@ def register_blueprints(app: Flask):
 def register_extensions(app): 
     """Register Flask extensions."""
 
-    db.init_app(app)
+    # db.init_app(app)
+    swagger.init_app(app)
 
 
